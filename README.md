@@ -24,10 +24,11 @@ async function B_work() {
         window.setTimeout(function () {
             console.log(Date.now() + ": worker B finish work, waiting for worker A...");
             Signal("wait");
-        }, 1000);
+        }, 2000);
     }
 }
 
 A_prepare();
 B_work();
 ```
+[Demo](https://desktop-model-player.github.io/js-signal/one-to-one.html)
