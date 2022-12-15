@@ -18,7 +18,7 @@ async function B_work() {
         window.setTimeout(function () {
             console.log(Date.now() + ": worker B finish work, waiting for worker A...");
             Signal("wait");
-        }, 1000);
+        }, 2000);
     }
 }
 
