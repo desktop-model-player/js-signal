@@ -1,10 +1,9 @@
 
 async function A_prepare() {
-
     while (1) {
-        console.log(Date.now(), ": worker A prepare...");
+        console.log(Date.now() + ": worker A start preparing...");
         window.setTimeout(function () {
-            console.log(Date.now(), ": worker A prepared.");
+            console.log(Date.now() + ": worker A prepared.");
             Signal("prepared");
         }, 1000);
         await WaitForSignal("wait");
@@ -14,9 +13,10 @@ async function A_prepare() {
 async function B_work() {
     while (1) {
         await WaitForSignal("prepared");
-        console.log(Date.now(), ": worker B start work.");
+        console.log(Date.now() + ": worker B start work.");
+
         window.setTimeout(function () {
-            console.log(Date.now(), ": worker B finish work, waiting for worker A...");
+            console.log(Date.now() + ": worker B finish work, waiting for worker A...");
             Signal("wait");
         }, 1000);
     }
