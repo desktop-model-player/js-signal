@@ -31,4 +31,4 @@ async function B_work() {
 A_prepare();
 B_work();
 ```
-[Demo](https://desktop-model-player.github.io/js-signal/one-to-one.html)
+[Demo](https://ysd2z.github.io/js-signal/one-to-one.html)
