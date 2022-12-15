@@ -1,23 +1,33 @@
 # js-signal
 javascript signal for synchronization
 
-## one time usage
+## one-to-one sync blocked
 
 ```
-function A_prepare() {
-    console.log(Date.now(), ": worker A prepare...");
-    window.setTimeout(function () {
-        Signal("ready");
-        console.log(Date.now(), ": worker A prepared.");
-    }, 3000);
+async function A_prepare() {
+
+    while (1) {
+        console.log(Date.now() + ": worker A start preparing...");
+        window.setTimeout(function () {
+            console.log(Date.now() + ": worker A prepared.");
+            Signal("prepared");
+        }, 1000);
+        await WaitForSignal("wait");
+    }
 }
 
-async function B_wait() {
-    console.log(Date.now(), ": worker B waiting for worker A...");
-    await WaitForSignal("ready");
-    console.log(Date.now(), ": worker B start work.");
+async function B_work() {
+    while (1) {
+        await WaitForSignal("prepared");
+        console.log(Date.now() + ": worker B start work.");
+
+        window.setTimeout(function () {
+            console.log(Date.now() + ": worker B finish work, waiting for worker A...");
+            Signal("wait");
+        }, 1000);
+    }
 }
 
 A_prepare();
-B_wait();
+B_work();
 ```
