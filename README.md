@@ -31,4 +31,4 @@ async function B_work() {
 A_prepare();
 B_work();
 ```
-[Demo](https://ysd2z.github.io/js-signal/one-to-one/sync/blocked/one-to-one.html)
+[Demo](https://ysd2z.github.io/js-signal/one-to-one/sync/blocked/demo.html)
