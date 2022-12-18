@@ -33,7 +33,6 @@ B_work();
 ```
 [Demo](https://ysd2z.github.io/js-signal/one-to-one/sync/blocked/demo.html)
 
-
 ## one-to-multi sync blocked
 
 ```
